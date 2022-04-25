@@ -18,7 +18,6 @@ public class YouTubeApiController {
 
     @GetMapping("/")
     public String getYouTube(){
-        //search?part=snippet&q=argentina&key=AIzaSyB1H6hzeZaPuwQLb_ToWbr3PMVAff_hc-M
 
         this.q = "highlights Man City 0-0 Sporting CP";
         YTVideo ytVideo = new YTVideo(this.q);

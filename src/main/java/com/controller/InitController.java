@@ -90,25 +90,6 @@ public class InitController {
         }
         model.addAttribute("resultList",resultList);
 
-
-        //YouTube Video
-        /*for (Result resul:resultList) {
-            String q;
-            q = "highlights " + resul.getStrHomeTeam() + " " + resul.getIntHomeScore() + "-" + resul.getIntAwayScore() + " " + resul.getStrAwayTeam();
-            YTVideo ytVideo = new YTVideo(q);
-            YouTube youTube = iYouTubeService.getYoutube(ytVideo);
-            String idYouTube = youTube.getItems().get(0).getId().getVideoId();
-            resul.setStrVideo(idYouTube);
-        }*/
-
-        //ver ResponseEntity en dollar
-
-        //Clase generica que se encargue de hacer los request a las API, Una sola clase, para todas las apis                (ok)
-        // Usar java generics, y algun cliente HTTP como rest template o alguno de apache que no me acuerdo el nombre       (ok)
-        // hacer los modelos manualmente                                                                                    (ok)
-
-        // hacer usuario y base de datos
-
         return "mc";
     }
 
