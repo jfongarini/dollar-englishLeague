@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<section th:replace="button :: button"></section>
+<div id="actions" class="py-4 mb-4 bg-light"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Manchester City Last 5 Matches</h4>
+                </div>
+                <div>
+                    <table class="table table-stryped" id="datatable5">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>League</th>
+                            <th>HighLights</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="results : ${resultList}">
+                            <td>[[${results.dateEvent}]]</td>
+                            <td>[[${results.strHomeTeam}]]</td>
+                            <td>[[${results.intHomeScore}]]</td>
+                            <th>-</th>
+                            <td>[[${results.intAwayScore}]]</td>
+                            <td>[[${results.strAwayTeam}]]</td>
+                            <td>[[${results.strLeague}]]</td>
+                            <td><a href="#"  class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                   th:onclick="mostrarValores([[${results.strVideo}]] );">
+                                <i class="fas fa-play"></i></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="ratio ratio-16x9">
+                <iframe id="ytplayer"  src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    <script>
+$('#exampleModal').on('hide.bs.modal', () => {
+        var video = $("#ytplayer").attr("src");
+        $("#ytplayer").attr("src","");
+        $("#ytplayer").attr("src",video);
+    });
+function mostrarValores(id){
+    document.getElementById("ytplayer").src = "https://www.youtube.com/embed/"+id;
+}
+</script>
+</div>
+</body>
+</html>

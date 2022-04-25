@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<section th:replace="button :: button"></section>
+
+<div id="actions" class="py-4 mb-4 bg-light"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Dollar</h4>
+                </div>
+                <div>
+                    <table class="table table-stryped" id="datatable1">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Buy</th>
+                            <th>Sell</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Oficial</td>
+                            <td>[[${dollarOficial.fecha}]]</td>
+                            <td>[[${dollarOficial.compra}]]</td>
+                            <td>[[${dollarOficial.venta}]]</td>
+                        </tr>
+                        <tr>
+                            <td>Blue</td>
+                            <td>[[${dollarBlue.fecha}]]</td>
+                            <td>[[${dollarBlue.compra}]]</td>
+                            <td>[[${dollarBlue.venta}]]</td>
+                        </tr>
+                        <tr>
+                            <td>Bolsa</td>
+                            <td>[[${dollarBolsa.fecha}]]</td>
+                            <td>[[${dollarBolsa.compra}]]</td>
+                            <td>[[${dollarBolsa.venta}]]</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<section th:replace="button :: button"></section>
+<div id="actions" class="py-4 mb-4 bg-light"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <h4>English Premier League</h4>
+                </div>
+                <div>
+                    <table class="table table-stryped" id="datatable">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Form</th>
+                            <th>GP</th>
+                            <th>W</th>
+                            <th>D</th>
+                            <th>L</th>
+                            <th>GF</th>
+                            <th>GA</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="table : ${tableList}">
+                            <td>[[${table.intRank}]]</td>
+                            <td><img th:src="@{${table.strTeamBadge}}" width="25" height="25"></img></td>
+                            <td>[[${table.strTeam}]]</td>
+                            <td>[[${table.strForm}]]</td>
+                            <td>[[${table.intPlayed}]]</td>
+                            <td>[[${table.intWin}]]</td>
+                            <td>[[${table.intDraw}]]</td>
+                            <td>[[${table.intLoss}]]</td>
+                            <td>[[${table.intGoalsFor}]]</td>
+                            <td>[[${table.intGoalsAgainst}]]</td>
+                            <td>[[${table.intGoalDifference}]]</td>
+                            <td>[[${table.intPoints}]]</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4><u>Stats</u></h4>
+                    </br>
+                    <h6>Most Draws</h6>
+                    <table class="table table-stryped" id="datatable2">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Draws</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><img th:src="@{${mostDrawsIcon}}" width="25" height="25"></img></td>
+                            <td>[[${mostDrawsTeam}]]</td>
+                            <td>[[${mostDrawsNumber}]]</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </br>
+                    <h6>Most Goals Against</h6>
+                    <table class="table table-stryped" id="datatable3">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>GA</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><img th:src="@{${mostAgainstIcon}}" width="25" height="25"></img></td>
+                            <td>[[${mostAgainstTeam}]]</td>
+                            <td>[[${mostAgainstNumber}]]</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </br>
+                    <h6>Most Goals For</h6>
+                    <table class="table table-stryped" id="datatable4">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>GF</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><img th:src="@{${mostForIcon}}" width="25" height="25"></img></td>
+                            <td>[[${mostForTeam}]]</td>
+                            <td>[[${mostForNumber}]]</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
